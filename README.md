@@ -1,3 +1,3 @@
 # AutoCoder
 
-## Autocoder is an automated code generation tool designed to help developers write code faster and more efficiently. It is a command-line tool that generates code based on a set of user-defined templates. Autocoder is written in Python and is open-source.
+## AutoCoder helps developers generate code snippets, offers real-time syntax corrections. This project aims to boost productivity and minimize errors, making it suitable for both beginners and seasoned programmers. AutoCoder adapts to individual coding styles by analyzing existing patterns, fostering a more efficient development workflow. Whether for personal projects or professional applications, AutoCoder is set to revolutionize your software development process.
