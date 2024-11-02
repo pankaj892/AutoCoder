@@ -1,18 +1,15 @@
 name: Say Hello Workflow
 
 on:
-  push:
-    branches:
-      - main
+  issues:
+    types: [opened, reopened]
 
 jobs:
   say_hello_job:
     runs-on: ubuntu-latest
     steps:
-      - name: A job to say hello
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Say Hello
-        run: echo "Hello, world!"
       - name: Set environment variables
         run: |
           echo "ISSUE_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
@@ -28,3 +25,8 @@ jobs:
           echo "Issue Body: $ISSUE_BODY"
           echo "Issue Assignees: $ISSUE_ASSIGNEES"
           echo "Issue Labels: $ISSUE_LABELS"
+
+      - name: Fetch issue details from GitHub API
+        run: |
+          ISSUE_RESPONSE=$(curl -s https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
+          echo "Issue Information: $ISSUE_RESPONSE"
