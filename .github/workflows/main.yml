@@ -12,13 +12,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set environment variables and print issue details
-        run: |
-          ISSUE_NUMBER=${{ github.event.issue.number }}
-          ISSUE_TITLE="${{ github.event.issue.title }}"
-          ISSUE_BODY="${{ github.event.issue.body }}"
-          ISSUE_ASSIGNEES="${{ join(github.event.issue.assignees.*.login, ', ') }}"
-          ISSUE_LABELS="${{ join(github.event.issue.labels.*.name, ', ') }}"
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: "${{ github.event.issue.title }}"
+          ISSUE_BODY: "${{ github.event.issue.body }}"
+          ISSUE_ASSIGNEES: "${{ join(github.event.issue.assignees.*.login, ', ') }}"
+          ISSUE_LABELS: "${{ join(github.event.issue.labels.*.name, ', ') }}"
 
+        run: |
           echo "Issue Number: $ISSUE_NUMBER"
           echo "Issue Title: $ISSUE_TITLE"
           echo "Issue Body: $ISSUE_BODY"
