@@ -27,5 +27,5 @@ jobs:
 
       - name: Retrieve Issue Information via API  # This can also stay the same
         run: |
-          ISSUE_RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
+          ISSUE_RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.TOKEN_GITHUB }}" https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
           echo "Issue Information: $ISSUE_RESPONSE"
