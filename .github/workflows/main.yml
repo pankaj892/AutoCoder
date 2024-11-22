@@ -1,32 +1,43 @@
-name: Issue Details Workflow
+name: Autocoder Action Workflow
 
 on:
   issues:
-    types: [opened, reopened]
+    types: [opened, reopened, labeled]
 
 jobs:
-  get-issue-details:
+  code_generation:
     runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
+
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set environment variables and print issue details
+      - name: Set permissions to script and make it executable
+        run: chmod +x ./scripts/script.sh
+
+      - name: Generate Code with ChatGPT
+        id: generate_code
         env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          REPOSITORY: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_TITLE: "${{ github.event.issue.title }}"
-          ISSUE_BODY: "${{ github.event.issue.body }}"
-          ISSUE_ASSIGNEES: "${{ join(github.event.issue.assignees.*.login, ', ') }}"
-          ISSUE_LABELS: "${{ join(github.event.issue.labels.*.name, ', ') }}"
+        run: ./scripts/script.sh $GITHUB_TOKEN $REPOSITORY $ISSUE_NUMBER $OPENAI_API_KEY
+      
+      - name: Upload Generated Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: autocoder-artifact
+          path: autocoder-output/
 
-        run: |
-          echo "Issue Number: $ISSUE_NUMBER"
-          echo "Issue Title: $ISSUE_TITLE"
-          echo "Issue Body: $ISSUE_BODY"
-          echo "Issue Assignees: $ISSUE_ASSIGNEES"
-          echo "Issue Labels: $ISSUE_LABELS"
-
-      - name: Retrieve Issue Information via API  # This can also stay the same
-        run: |
-          ISSUE_RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.TOKEN_GITHUB }}" https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER)
-          echo "Issue Information: $ISSUE_RESPONSE"
+      - name: Download Generated Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: autocoder-artifact
+          path: autocoder-artifact/
+      
+      - name: List Files
+        run: ls -R autocoder-artifact/
+      
