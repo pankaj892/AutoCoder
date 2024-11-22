@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit immediately if a command exits with a non-zero status.
-#set -e
+set -e
 
 # Get inputs from the environment
 GITHUB_TOKEN="$1"
@@ -18,24 +18,24 @@ fetch_issue_details() {
 # Function to send prompt to the ChatGPT model (OpenAI API)
 send_prompt_to_chatgpt() {
 
-MESSAGES_JSON='[
-{"role": "user", "content": "Explain about cloud computing" }
-]'
-
-# curl -s -X POST "https://api.openai.com/v1/chat/completions" \
-#     -H "Authorization: Bearer $OPENAI_API_KEY" \
-#     -H "Content-Type: application/json" \
-#     -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": $MESSAGES_JSON, \"max_tokens\": 500}"
-
+# MESSAGES_JSON='[
+# {"role": "user", "content": "Explain about cloud computing" }
+# ]'
 
 curl -s -X POST "https://api.openai.com/v1/chat/completions" \
-        -H "Authorization: Bearer $OPENAI_API_KEY" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "gpt-3.5-turbo",
-          "messages": '"$MESSAGES_JSON"',
-          "max_tokens": 500
-        }'
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": $MESSAGES_JSON, \"max_tokens\": 500}"
+
+
+# curl -s -X POST "https://api.openai.com/v1/chat/completions" \
+#         -H "Authorization: Bearer $OPENAI_API_KEY" \
+#         -H "Content-Type: application/json" \
+#         -d '{
+#           "model": "gpt-3.5-turbo",
+#           "messages": '"$MESSAGES_JSON"',
+#           "max_tokens": 500
+#         }'
 }
 
 
@@ -80,17 +80,17 @@ fi
 # Make sure that the extracted content is valid JSON
 FILES_JSON=$(echo "$RESPONSE" | jq -e '.choices[0].message.content | fromjson' 2> /dev/null)
 
-# if [[ -z "$FILES_JSON" ]]; then
-#     echo "No valid JSON dictionary found in the response or the response was not valid JSON. Please rerun the job."
-#     exit 1
-# fi
-
-
-if [[ $? -ne 0 ]]; then
-    echo "Error: Failed to parse JSON response from OpenAI."
-    echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
+if [[ -z "$FILES_JSON" ]]; then
+    echo "No valid JSON dictionary found in the response or the response was not valid JSON. Please rerun the job."
     exit 1
 fi
+
+
+# if [[ $? -ne 0 ]]; then
+#     echo "Error: Failed to parse JSON response from OpenAI."
+#     echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
+#     exit 1
+# fi
 
 # Iterate over each key-value pair in the JSON dictionary
 for key in $(echo "$FILES_JSON" | jq -r 'keys[]'); do
