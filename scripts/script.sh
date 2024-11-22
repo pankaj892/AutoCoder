@@ -19,7 +19,7 @@ fetch_issue_details() {
 send_prompt_to_chatgpt() {
 
 # MESSAGES_JSON='[
-# {"role": "user", "content": "Explain about cloud computing" }
+# {"role": "user", "content": "Say some joke on cloud" }
 # ]'
 
 curl -s -X POST "https://api.openai.com/v1/chat/completions" \
