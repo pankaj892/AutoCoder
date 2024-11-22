@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: autocoder-artifact
-          path: autocoder-output/
+          path: autocoder-bot/
 
       - name: Download Generated Artifact
         uses: actions/download-artifact@v3
