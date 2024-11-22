@@ -80,8 +80,15 @@ fi
 # Make sure that the extracted content is valid JSON
 FILES_JSON=$(echo "$RESPONSE" | jq -e '.choices[0].message.content | fromjson' 2> /dev/null)
 
-if [[ -z "$FILES_JSON" ]]; then
-    echo "No valid JSON dictionary found in the response or the response was not valid JSON. Please rerun the job."
+# if [[ -z "$FILES_JSON" ]]; then
+#     echo "No valid JSON dictionary found in the response or the response was not valid JSON. Please rerun the job."
+#     exit 1
+# fi
+
+
+if [[ $? -ne 0 ]]; then
+    echo "Error: Failed to parse JSON response from OpenAI."
+    echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
     exit 1
 fi
 
