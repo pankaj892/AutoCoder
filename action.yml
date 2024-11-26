@@ -1,4 +1,3 @@
-
 name: 'AutoCoder'
 description: 'Generates code using ChatGPT and creates a pull request with the generated code.'
 author: 'github.com/pankaj892'
@@ -34,6 +33,7 @@ runs:
     - name: Make script executable
       run: chmod +x ${{ github.action_path }}/${{ inputs.SCRIPT_PATH }}
       shell: bash
+      
     - name: Generate Code with ChatGPT
       id: generate_code
       run: ${{ github.action_path }} / ${{ inputs.SCRIPT_PATH }} ${{ inputs.GITHUB_TOKEN }} ${{ inputs.REPOSITORY }} ${{ inputs.ISSUE_NUMBER }} ${{ inputs.OPENAI_API_KEY }}
