@@ -84,14 +84,14 @@ jobs:
   generate_code:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
       - name: Generate Code with ChatGPT
         id: generate_code
-        uses: pankaj892/Autocoder@v4
+        uses: pankaj892/Autocoder@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # issue_label: 'autocoder'
-          repository: ${{ github.repository }}
-          issue_number: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
