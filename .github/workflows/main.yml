@@ -72,9 +72,11 @@
 
 
 name: AutoCodeGen
+
 on:
   issues:
     types: [opened, reopened, labeled]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -82,16 +84,19 @@ permissions:
 
 jobs:
   generate_code:
+    if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+    
       - name: Generate Code with ChatGPT
         id: generate_code
         uses: pankaj892/Autocoder@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # issue_label: 'autocoder'
           REPOSITORY: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
