@@ -19,6 +19,10 @@ inputs:
     description: 'The path to the script that interacts with ChatGPT and generates code.'
     required: false
     default: scripts/script.sh
+  LABEL:
+    description: 'Allows users to customize the label that triggers the action.'
+    required: false
+    default: autocoder-bot
 
 outputs:
   pull_request_url:
