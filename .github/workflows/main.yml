@@ -83,7 +83,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: AutoCoder Composite Action
-        uses: pankaj892/Autocoder-Action@v2
+        uses: pankaj892/Autocoder@v2
         with:
           github_token: $\{{ secrets.GITHUB_TOKEN }}
           openai_api_key: $\{{ secrets.OPENAI_API_KEY }}
