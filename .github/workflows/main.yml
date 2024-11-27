@@ -68,9 +68,6 @@
 
 
 
-## Using the AutoCoder Composite Action
-
-
 name: AutoCodeGen
 
 on:
@@ -90,13 +87,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-    
       - name: Generate Code with ChatGPT
         id: generate_code
         uses: pankaj892/Autocoder@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # issue_label: 'autocoder'
+          LABEL: 'autocoder'
           REPOSITORY: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SCRIPT_PATH: './scripts/script.sh'
