@@ -29,9 +29,9 @@ fetch_issue_details() {
 # Function to send prompt to the ChatGPT model (OpenAI API)
 send_prompt_to_chatgpt() {
 
-# MESSAGES_JSON='[
-# {"role": "user", "content": "Say some joke on cloud" }
-# ]'
+MESSAGES_JSON='[
+{"role": "user", "content": "Say some joke on cloud" }
+]'
 
 curl -s -X POST "https://api.openai.com/v1/chat/completions" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
