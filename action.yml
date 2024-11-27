@@ -43,7 +43,7 @@ runs:
       run: chmod +x ${{ inputs.SCRIPT_PATH }}
       shell: bash
 
-    - name: Generate Code with ChatGPT
+    - name: interact with ChatGPT
       id: generate_code
       run: ${{ inputs.SCRIPT_PATH }} ${{ inputs.GITHUB_TOKEN }} ${{ inputs.REPOSITORY }} ${{ inputs.ISSUE_NUMBER }} ${{ inputs.OPENAI_API_KEY }}
       shell: bash
@@ -53,21 +53,21 @@ runs:
         ISSUE_NUMBER: ${{ inputs.ISSUE_NUMBER }}
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: autocoder-artifact
-        path: autocoder-bot/
+    # - name: Upload Artifact
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: autocoder-artifact
+    #     path: autocoder-bot/
 
-    - name: Download Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: autocoder-artifact
-        path: autocoder-bot/
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v4
+    #   with:
+    #     name: autocoder-artifact
+    #     path: autocoder-bot/
 
-    - name: List Files
-      run: ls -R ./autocoder-bot
-      shell: bash
+    # - name: List Files
+    #   run: ls -R ./autocoder-bot
+    #   shell: bash
 
     - name: Commit files
       run: |
