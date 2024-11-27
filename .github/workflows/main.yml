@@ -87,7 +87,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Interact with ChatGPT
+        
+      - name: Generate Code with ChatGPT
         id: generate_code
         uses: pankaj892/Autocoder@main
         with:
