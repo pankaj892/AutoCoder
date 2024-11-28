@@ -92,9 +92,9 @@ jobs:
         id: generate_code
         uses: pankaj892/Autocoder@main
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY: ${{ github.repository }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SCRIPT_PATH: './scripts/script.sh'
-          label: 'autocoder-bot'
+          GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
+          # REPOSITORY: ${{ github.repository }
+          # ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OPENAI_API_KEY: $\{{ secrets.OPENAI_API_KEY }}
+          # SCRIPT_PATH: './scripts/script.sh'
+          # LABEL: 'autocoder-bot'
