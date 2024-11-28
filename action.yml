@@ -44,22 +44,20 @@ runs:
       run: ${{ inputs.SCRIPT_PATH }} ${{ inputs.GITHUB_TOKEN }} ${{ inputs.REPOSITORY }} ${{ inputs.ISSUE_NUMBER }} ${{ inputs.OPENAI_API_KEY }} > result.txt
       shell: bash
      
-    # - name: Upload Artifact
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: autocoder-artifact
-    #     path: result.txt
 
-    # - name: Download Artifact
-    #   uses: actions/download-artifact@v4
-    #   with:
-    #     name: autocoder-artifact
-    #     path: .
-    #     overwrite: true
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: autocoder-artifact
+        path: result.txt
 
-    # - name: List Files
-    #   run: ls -R ./autocoder-bot
-    #   shell: bash
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: autocoder-artifact
+        path: .
+        overwrite: true
+
 
     - name: Commit files
       run: |
