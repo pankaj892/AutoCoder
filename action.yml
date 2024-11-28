@@ -1,4 +1,4 @@
-name: 'AutoCoder-Workflow'
+name: 'AutoCoder'
 description: 'Code generation from GitHub issues using OpenAIs ChatGPT'
 author: 'pankaj892'
 
