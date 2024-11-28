@@ -80,7 +80,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  generate_code:
+  interact-with-chatgpt:
     runs-on: ubuntu-latest
     if: contains(github.event.issue.labels.*.name, 'autocoder-bot')
 
