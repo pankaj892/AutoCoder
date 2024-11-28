@@ -73,7 +73,7 @@ name: AutoCodeGen
 on:
   issues:
     types: [opened, reopened, labeled]
-  workflow_dispatch:
+  # workflow_dispatch:
 
 permissions:
   contents: write
@@ -96,5 +96,5 @@ jobs:
           REPOSITORY: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SCRIPT_PATH: './scripts/script.sh'
-          LABEL: 'autocoder-bot'
+          SCRIPT_PATH: "./scripts/script.sh"
+          LABEL: "autocoder-bot"
