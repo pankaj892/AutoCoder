@@ -3,7 +3,8 @@ name: AutoCoder Workflow
 on:
   issues:
     types: [opened, reopened, labeled]
-  # workflow_dispatch:
+  # Use workflow_dispatch to manually run the workflow without any events
+  # workflow_dispatch:   
 
 permissions:
   contents: write
