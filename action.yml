@@ -43,7 +43,7 @@ runs:
       run: chmod +x ${{ inputs.SCRIPT_PATH }}
       shell: bash
 
-    - name: Interact with ChatGPT
+    - name: Generate Code with ChatGPT
       id: generate_code
       run: ${{ inputs.SCRIPT_PATH }} ${{ inputs.GITHUB_TOKEN }} ${{ inputs.REPOSITORY }} ${{ inputs.ISSUE_NUMBER }} ${{ inputs.OPENAI_API_KEY }} > result.txt
       shell: bash
@@ -75,9 +75,10 @@ runs:
 
 
     - name: Create pull request
-      if: success()
+      # if: success()
       uses: peter-evans/create-pull-request@v6
       with:
+        token: ${{ inputs.GITHUB_TOKEN }}
         commit-message: "Add code snippets from issue #${{ github.event.issue.number }}"
         title: "Add code snippets from issue #${{ github.event.issue.number }}"
         body: |
