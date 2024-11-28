@@ -1,0 +1,1 @@
+const tokyo = { name: 'Tokyo', country: 'Japan', population: 37400000 };

@@ -1,0 +1,1 @@
+const istanbul = { name: 'Istanbul', country: 'Turkey', population: 15200000 };
