@@ -29,9 +29,9 @@ fetch_issue_details() {
 # Function to send prompt to the ChatGPT model (OpenAI API)
 send_prompt_to_chatgpt() {
 
-MESSAGES_JSON='[
-{"role": "user", "content": "Say some joke on cloud" }
-]'
+# MESSAGES_JSON='[
+# {"role": "user", "content": "Say some joke on cloud" }
+# ]'
 
 curl -s -X POST "https://api.openai.com/v1/chat/completions" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -97,11 +97,11 @@ if [[ -z "$FILES_JSON" ]]; then
 fi
 
 
-if [[ $? -ne 0 ]]; then
-    echo "Error: Failed to parse JSON response from OpenAI."
-    echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
-    exit 1
-fi
+# if [[ $? -ne 0 ]]; then
+#     echo "Error: Failed to parse JSON response from OpenAI."
+#     echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
+#     exit 1
+# fi
 
 # Iterate over each key-value pair in the JSON dictionary
 for key in $(echo "$FILES_JSON" | jq -r 'keys[]'); do
