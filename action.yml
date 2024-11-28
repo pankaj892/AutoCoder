@@ -63,7 +63,7 @@ runs:
       uses: actions/download-artifact@v4
       with:
         name: autocoder-artifact
-        path: autocoder-bot/
+        path: autocoder-artifact/
 
     - name: List Files
       run: ls -R ./autocoder-bot
