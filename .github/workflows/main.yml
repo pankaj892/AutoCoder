@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Autocoder Composite Workflow
+      - name: Interact with ChatGPT
         # id: generate_code
         uses: pankaj892/Autocoder@v1
         with:
