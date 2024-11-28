@@ -97,11 +97,11 @@ if [[ -z "$FILES_JSON" ]]; then
 fi
 
 
-if [[ $? -ne 0 ]]; then
-    echo "Error: Failed to parse JSON response from OpenAI."
-    echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
-    exit 1
-fi
+# if [[ $? -ne 0 ]]; then
+#     echo "Error: Failed to parse JSON response from OpenAI."
+#     echo "OpenAI API Response: $RESPONSE"  # Log the raw response that caused the failure
+#     exit 1
+# fi
 
 # Iterate over each key-value pair in the JSON dictionary
 for key in $(echo "$FILES_JSON" | jq -r 'keys[]'); do
