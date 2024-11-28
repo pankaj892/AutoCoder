@@ -20,7 +20,7 @@ jobs:
         
       - name: Autocoder Composite Workflow
         # id: generate_code
-        uses: pankaj892/Autocoder@main
+        uses: pankaj892/Autocoder@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
