@@ -1,0 +1,1 @@
+const nagoya = { name: 'Nagoya', population: '2,191,279', attractions: ['Nagoya Castle', 'Atsuta Shrine', 'Osu Kannon Temple'] };

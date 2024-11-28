@@ -1,0 +1,1 @@
+const kyoto = { name: 'Kyoto', population: '1,475,183', attractions: ['Kinkaku-ji', 'Fushimi Inari Shrine', 'Arashiyama Bamboo Grove'] };

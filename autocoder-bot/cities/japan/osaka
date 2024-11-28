@@ -1,0 +1,1 @@
+const osaka = { name: 'Osaka', population: '2,691,434', attractions: ['Osaka Castle', 'Dotonbori', 'Shitenno-ji Temple'] };

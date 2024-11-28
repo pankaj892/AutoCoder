@@ -1,0 +1,1 @@
+const sapporo = { name: 'Sapporo', population: '1,979,183', attractions: ['Sapporo TV Tower', 'Odori Park', 'Sapporo Beer Museum'] };
