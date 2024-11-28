@@ -32,10 +32,6 @@ runs:
   using: 'composite'
 
   steps:
-    # - name: Greet Users
-    #   run: echo "Hello, welcome to AutoCoder! Let's generate some code."
-    #   shell: bash
-      
     - name: Checkout Repository
       uses: actions/checkout@v4
 
@@ -48,22 +44,22 @@ runs:
       run: ${{ inputs.SCRIPT_PATH }} ${{ inputs.GITHUB_TOKEN }} ${{ inputs.REPOSITORY }} ${{ inputs.ISSUE_NUMBER }} ${{ inputs.OPENAI_API_KEY }} > result.txt
       shell: bash
      
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: autocoder-artifact
-        path: result.txt
+    # - name: Upload Artifact
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: autocoder-artifact
+    #     path: result.txt
 
-    - name: Download Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: autocoder-artifact
-        path: .
-        overwrite: true
+    # - name: Download Artifact
+    #   uses: actions/download-artifact@v4
+    #   with:
+    #     name: autocoder-artifact
+    #     path: .
+    #     overwrite: true
 
-    - name: List Files
-      run: ls -R ./autocoder-bot
-      shell: bash
+    # - name: List Files
+    #   run: ls -R ./autocoder-bot
+    #   shell: bash
 
     - name: Commit files
       run: |
