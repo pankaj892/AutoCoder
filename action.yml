@@ -1,6 +1,5 @@
 name: 'AutoCoder-Workflow'
-description: 'This action automates code generation from GitHub issues using OpenAIs ChatGPT 
-                and creates a pull request with the generated code for review.'
+description: 'Code generation from GitHub issues using OpenAIs ChatGPT'
 author: 'pankaj892'
 
 inputs:
