@@ -1,6 +1,6 @@
-name: 'AutoCoder'
-description: 'This action automates the process of generating code from GitHub issues using OpenAIs ChatGPT and subsequently creates a pull request with the generated code for review.'
-author: 'github.com/pankaj892'
+name: 'AutoCoder-Workflow'
+description: 'This action automates the process of generating code from GitHub issues using OpenAIs ChatGPT and creates a pull request with the generated code for review.'
+author: 'pankaj892'
 
 inputs:
   GITHUB_TOKEN:
