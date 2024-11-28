@@ -89,7 +89,7 @@ jobs:
         uses: actions/checkout@v4
         
       - name: interact with ChatGPT
-        id: generate_code
+        # id: generate_code
         uses: pankaj892/Autocoder@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
