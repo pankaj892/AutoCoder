@@ -68,7 +68,7 @@
 
 
 
-name: AutoCodeGen
+name: AutoCoder Workflow
 
 on:
   issues:
@@ -88,7 +88,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: interact with ChatGPT
+      - name: Autocoder Composite Workflow
         # id: generate_code
         uses: pankaj892/Autocoder@main
         with:
