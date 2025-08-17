@@ -46,7 +46,7 @@ curl -s -X POST "https://api.openai.com/v1/chat/completions" \
           "model": "gpt-3.5-turbo",
           "messages": '"$MESSAGES_JSON"',
           "max_tokens": 500
-        }'
+        }
 
 
 # Function to save code snippet to file
